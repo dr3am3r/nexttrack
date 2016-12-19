@@ -5,5 +5,3 @@ if (process.env.ENV === 'production') {
   enableProdMode();
 }
 platformBrowserDynamic().bootstrapModule(AppModule);
-
-console.log('process.env : ', process.env);
