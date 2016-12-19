@@ -18,6 +18,7 @@ module.exports = webpackMerge(commonConfig, {
   ],
 
   devServer: {
+    host: '0.0.0.0',
     historyApiFallback: true,
     stats: 'minimal'
   }
