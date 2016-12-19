@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log(process.env);
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -22,7 +24,8 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'html'
+        loader: 'html',
+        exclude: 'src/index.html'
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
@@ -48,6 +51,17 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        'firebase.apiKey': JSON.stringify(process.env['firebase.apiKey']),
+        'firebase.authDomain': JSON.stringify(process.env['firebase.authDomain']),
+        'firebase.databaseURL': JSON.stringify(process.env['firebase.databaseURL']),
+        'firebase.storageBucket': JSON.stringify(process.env['firebase.storageBucket']),
+        'firebase.messagingSenderId': JSON.stringify(process.env['firebase.messagingSenderId'])
+      }
     })
   ]
 };
