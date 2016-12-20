@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+
 import { AngularFireModule } from 'angularfire2';
+
 import { AppComponent } from './app.component';
+import { VotingComponent } from './songs/voting.component';
+import { SongsComponent } from './songs/songs.component';
+import { SongService } from './songs/song.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -13,8 +19,11 @@ import { AppComponent } from './app.component';
     })
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    VotingComponent,
+    SongsComponent
   ],
+  providers: [ SongService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

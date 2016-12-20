@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-npm-debug.log*
 
 # Runtime data
 pids
@@ -37,3 +36,18 @@ jspm_packages
 .node_repl_history
 
 .env
+
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Node Files #
+/node_modules
+/bower_components
+npm-debug.log
+
+# IDE #
+.idea/
+*.swp
