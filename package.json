@@ -21,6 +21,7 @@
     "core-js": "^2.4.1",
     "firebase": "3.6.4",
     "rxjs": "5.0.0-beta.12",
+    "soundcloud-widget": "0.2.0",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
