@@ -6,6 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { VotingComponent } from './songs/voting.component';
 import { SongsComponent } from './songs/songs.component';
+import { SoundcloudComponent } from './soundcloud/widget.component';
 import { SongService } from './songs/song.service';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SongService } from './songs/song.service';
   declarations: [
     AppComponent,
     VotingComponent,
-    SongsComponent
+    SongsComponent,
+    SoundcloudComponent
   ],
   providers: [ SongService ],
   bootstrap: [ AppComponent ]
