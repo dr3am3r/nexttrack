@@ -4,9 +4,9 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
-import { VotingComponent } from './songs/voting.component';
 import { SongsComponent } from './songs/songs.component';
 import { SongService } from './songs/song.service';
+import { VotingDirective } from './songs/voting.directive';
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import { SongService } from './songs/song.service';
   ],
   declarations: [
     AppComponent,
-    VotingComponent,
-    SongsComponent
+    SongsComponent,
+    VotingDirective
   ],
   providers: [ SongService ],
   bootstrap: [ AppComponent ]
