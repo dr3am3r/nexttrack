@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Song } from './song';
 import { SongService } from './song.service.ts';
@@ -6,7 +6,7 @@ import { SongService } from './song.service.ts';
 @Component({
     selector: 'songs',
     templateUrl: './songs.component.html',
-    styleUrls: [ './songs.css' ]
+    styleUrls: [ './songs.css' ],
 })
 export class SongsComponent implements OnInit {
     songs: Song[];
@@ -28,6 +28,8 @@ export class SongsComponent implements OnInit {
     }
 
     onVote(song: Song): void {
-        console.log('song', song);
+        console.log('song before', song);
+        song.voteCount++;
+        console.log('song after', song);
     }
 }
