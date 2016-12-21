@@ -5,6 +5,11 @@
       <span class="brand-logo">
         <img src="../../public/images/logo.png">
       </span>
+      <div class="mdl-layout-spacer"></div>
+      <div>
+        <div> {{ (af.auth | async)?.uid }} </div>
+        <button (click)="anonLogin()">Login Anonymously</button>
+      </div>
     </div>
   </header>
   <main class="mdl-layout__content">

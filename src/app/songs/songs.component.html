@@ -1,3 +1,21 @@
+<ul>
+    <li *ngFor="let item of items | async">
+        <span>{{item.name}}</span>
+        <span>Votes: {{item.votes}}</span>
+        <button (click)="upvote(item.$key, item.votes)">Upvote</button>
+    </li>
+</ul>
+<hr />
+<ul class="songs">
+    <li *ngFor="let song of songs"
+        [class.selected]="song === selectedSong"
+        (click)="onSelect(song)">
+        <span class="badge">{{song.id}}</span> {{song.name}} | <span>Total votes: {{song.voteCount}}</span> |
+        <voting [userVote]="song.userVote" (vote)="onVote(song)"></voting>
+    </li>
+</ul>
+
+<h2>Change to:</h2>
 <div class="songs-container">
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp song-table">
         <thead>
@@ -9,12 +27,12 @@
         </tr>
         </thead>
         <tbody>
-            <tr class="song-row" *ngFor="let song of songs" (click)="onVote(song)">
-                <td class="mdl-data-table__cell--non-numeric">{{song.name}}</td>
-                <td class="mdl-data-table__cell--non-numeric">{{song.artist}}</td>
-                <td class="mdl-data-table__cell--non-numeric">{{song.album}}</td>
-                <td>{{song.votes.length}}</td>
-            </tr>
+        <tr class="song-row" *ngFor="let song of songs" (click)="onVote(song)">
+            <td class="mdl-data-table__cell--non-numeric">{{song.name}}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{song.artist}}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{song.album}}</td>
+            <td>{{song.votes.length}}</td>
+        </tr>
         </tbody>
     </table>
 </div>

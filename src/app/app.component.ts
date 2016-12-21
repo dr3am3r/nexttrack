@@ -12,29 +12,11 @@ import '../../public/css/styles.css';
 })
 export class AppComponent {
 
-  private limit: Subject<number> = new Subject<number>();
+    constructor(public af: AngularFire) {
 
-  constructor(af: AngularFire) {
-    af.database.list(`musica-43ba7`, {
-      query: {
-        limitToFirst: this.limit
-      }
-    }).subscribe((val) => console.log(val));
+    }
 
-    this.limit.next(1);
-
-    setTimeout(() => {
-      this.limit.next(2);
-    }, 2000);
-
-    setTimeout(() => {
-      this.limit.next(3);
-    }, 4000);
-
-    let random = Math.floor(Math.random() * 10);
-    setTimeout(() => {
-      af.database.object(`test/lol`).set(random);
-    }, 6000);
-  }
-
+    anonLogin() {
+        this.af.auth.login()
+    }
 }

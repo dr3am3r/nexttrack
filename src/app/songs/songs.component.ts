@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+
 import { Song } from './song';
 import { User } from './user';
 import { SongService } from './song.service.ts';
@@ -10,12 +12,24 @@ import { SongService } from './song.service.ts';
     styleUrls: [ './songs.css' ]
 })
 export class SongsComponent implements OnInit {
+
+    items: FirebaseListObservable<any>;
+
     songs: Song[];
     selectedSong: Song;
     user: string = 'id123121212122846';
 
-    constructor(
-        private songService: SongService) { }
+    constructor(af: AngularFire,
+        private songService: SongService) {
+
+        this.items = af.database.list('/tracks');
+
+    }
+
+    upvote(key: string, cnt?: any) {
+        let votesNum = (cnt || 0) + 1;
+        this.items.update(key, { votes: votesNum });
+    }
 
     getSongs(): void {
         this.songService.getSongs().then(songs => this.songs = songs);
