@@ -17,6 +17,7 @@ var _widget;
     `
 })
 export class SoundcloudComponent implements AfterViewInit {
+    @Input() songs: any;
     @Input() trackpath: string;
     private _isReady = false;
 
@@ -31,7 +32,7 @@ export class SoundcloudComponent implements AfterViewInit {
     ngOnChanges(changeRecords: any) {
         console.log('@ngOnChanges', changeRecords);
         //if (this._isReady) {
-        //    this.trackpath && this._widget.load(this.trackpath)
+        //    this.trackpath && _widget.load(this.trackpath)
         //}
     }
     ngAfterViewInit() {
@@ -44,8 +45,8 @@ export class SoundcloudComponent implements AfterViewInit {
                     console.log('current volume value is ' + volume);
                 });
             });
-            //this._isReady = true;
-            //this.trackpath && this._widget.load(this.trackpath)
+            this._isReady = true;
+            this.trackpath && _widget.load(this.trackpath)
         })
     }
 

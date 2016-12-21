@@ -1,38 +1,20 @@
-<ul>
-    <li *ngFor="let item of items | async">
-        <span>{{item.name}}</span>
-        <span>Votes: {{item.votes}}</span>
-        <button (click)="upvote(item.$key, item.votes)">Upvote</button>
-    </li>
-</ul>
-<hr />
-<!--<ul class="songs">-->
-    <!--<li *ngFor="let song of songs"-->
-        <!--[class.selected]="song === selectedSong"-->
-        <!--(click)="onSelect(song)">-->
-        <!--<span class="badge">{{song.id}}</span> {{song.name}} | <span>Total votes: {{song.voteCount}}</span> |-->
-        <!--<voting [userVote]="song.userVote" (vote)="onVote(song)"></voting>-->
-    <!--</li>-->
-<!--</ul>-->
+<soundcloud-widget [songs]="songs" trackpath="http://api.soundcloud.com/tracks/120168094"></soundcloud-widget>
 
-<!--TODO: change to table-->
-<!--<div class="songs-container">-->
-    <!--<table class="mdl-data-table mdl-js-data-table mdl-shadow&#45;&#45;2dp song-table">-->
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<th data-col="title" class="mdl-data-table__cell&#45;&#45;non-numeric">Name</th>-->
-            <!--<th data-col="artist" class="mdl-data-table__cell&#45;&#45;non-numeric">Artist</th>-->
-            <!--<th data-col="album" class="mdl-data-table__cell&#45;&#45;non-numeric">Album</th>-->
-            <!--<th data-col="rating">Rating</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr class="song-row" *ngFor="let song of songs" (click)="onVote(song)">-->
-            <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{song.name}}</td>-->
-            <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{song.artist}}</td>-->
-            <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{song.album}}</td>-->
-            <!--<td>{{song.votes.length}}</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-    <!--</table>-->
-<!--</div>-->
+<div class="songs-container">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp song-table">
+        <thead>
+        <tr>
+            <th data-col="artist" class="mdl-data-table__cell--non-numeric">Artist</th>
+            <th data-col="title" class="mdl-data-table__cell--non-numeric">Name</th>
+            <th data-col="rating">Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="song-row" *ngFor="let song of songs | async" (click)="upvote(song.$key, song.votes)">
+            <td class="mdl-data-table__cell--non-numeric">{{song.artist}}</td>
+            <td class="mdl-data-table__cell--non-numeric">{{song.name}}</td>
+            <td>{{song.votes}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -6,7 +6,6 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
 import { SoundcloudComponent } from './soundcloud/widget.component';
-import { SongService } from './songs/song.service';
 
 const myFirebaseConfig = {
   apiKey: process.env['firebase.apiKey'],
@@ -30,7 +29,6 @@ const myFirebaseAuthConfig = {
     SongsComponent,
     SoundcloudComponent
   ],
-  providers: [ SongService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
