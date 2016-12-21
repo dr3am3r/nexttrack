@@ -24,9 +24,9 @@ export class SongsComponent implements OnInit {
 
     }
 
-    upvote(key: string) {
-        console.log(this.items);
-        this.items.update(key, { votes: 'foo' });
+    upvote(key: string, cnt?: any) {
+        let votesNum = (cnt || 0) + 1;
+        this.items.update(key, { votes: votesNum });
     }
 
     getSongs(): void {

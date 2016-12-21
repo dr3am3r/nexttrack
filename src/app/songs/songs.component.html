@@ -1,7 +1,8 @@
 <ul>
     <li *ngFor="let item of items | async">
         <span>{{item.name}}</span>
-        <button (click)="upvote(item.$key)">Upvote</button>
+        <span>Votes: {{item.votes}}</span>
+        <button (click)="upvote(item.$key, item.votes)">Upvote</button>
     </li>
 </ul>
 <hr />
