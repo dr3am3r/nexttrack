@@ -1,9 +1,20 @@
-<ul class="songs">
-    <li *ngFor="let song of songs"
-        [class.hovered]="song === hoveredSong"
-        voting
-        (vote)="onVote($event, song)">
-        <span>#id: {{song.id}} | {{song.name}}</span> | <span>Total votes: {{song.votings.length}}</span>
-        <div>remove later: {{song.votings}}</div>
-    </li>
-</ul>
+<div class="songs-container">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp song-table">
+        <thead>
+        <tr>
+            <th data-col="title" class="mdl-data-table__cell--non-numeric">Name</th>
+            <th data-col="artist" class="mdl-data-table__cell--non-numeric">Artist</th>
+            <th data-col="album" class="mdl-data-table__cell--non-numeric">Album</th>
+            <th data-col="rating">Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="song-row" *ngFor="let song of songs" (click)="onVote(song)">
+                <td class="mdl-data-table__cell--non-numeric">{{song.name}}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{song.artist}}</td>
+                <td class="mdl-data-table__cell--non-numeric">{{song.album}}</td>
+                <td>{{song.votes.length}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -12,7 +12,7 @@ import { SongService } from './song.service.ts';
 export class SongsComponent implements OnInit {
     songs: Song[];
     selectedSong: Song;
-    user: User;
+    user: string = 'id123121212122846';
 
     constructor(
         private songService: SongService) { }
@@ -25,15 +25,20 @@ export class SongsComponent implements OnInit {
         this.getSongs();
     }
 
-    onVote(user: User, song: Song): void {
+    onVote(song: Song): void {
+        // TODO: shitty code just for quick check
         // check if we need to change values for the prev selected song
         if (this.selectedSong && this.selectedSong.id !== song.id) {
             // remove this user from the prev selected song votes
-            this.selectedSong.votings.splice(this.selectedSong.votings.indexOf(user), 1);
+            this.selectedSong.votes.splice(this.selectedSong.votes.indexOf(this.user), 1);
         }
+
         // change song selected
         this.selectedSong = song;
-        // push user id to the song votings array
-        song.votings.push(user);
+
+        //add user to votes array;
+        if (song.votes.indexOf(this.user) === -1) {
+            song.votes.push(this.user);
+        }
     }
 }

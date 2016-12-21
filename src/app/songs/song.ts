@@ -1,5 +1,7 @@
 export class Song {
     id: number;
     name: string;
-    votings: any;
+    artist: string;
+    album: string;
+    votes: any;
 }

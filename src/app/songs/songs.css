@@ -1,0 +1,45 @@
+.songs-container {
+    margin: 16px 72px 30px 72px;
+}
+.song-table {
+    cursor: pointer;
+    border-spacing: 0;
+    width: 100%;
+    table-layout: fixed;
+    outline: none;
+    padding: 16px 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    text-align: left;
+}
+.song-table th {
+    height: 36px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    color: #212121;
+    padding-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-row td {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.song-table [data-col="title"] {
+    width: 42%;
+}
+.song-table [data-col="artist"] {
+    width: 32%;
+}
+.song-table [data-col="artist"] {
+    width: 26%;
+}
+
+@media screen and (max-width: 1024px) {
+    .songs-container {
+        margin: 10px 12px 20px 12px;
+    }
+}
