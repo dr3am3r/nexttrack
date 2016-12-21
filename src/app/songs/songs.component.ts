@@ -22,6 +22,12 @@ export class SongsComponent implements OnInit {
 
         this.items = af.database.list('/tracks');
 
+        // this.items = af.database.list('/tracks', {
+//             query: {
+//                 orderByChild: 'votes'
+//             }
+//         });
+
     }
 
     upvote(key: string, cnt?: any) {
