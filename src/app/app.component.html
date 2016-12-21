@@ -1,4 +1,8 @@
 <main>
+  <div>
+    <div> {{ (af.auth | async)?.uid }} </div>
+      <button (click)="anonLogin()">Login Anonymously</button>
+  </div>
   <soundcloud-widget trackpath="http://api.soundcloud.com/tracks/120168094"></soundcloud-widget>
   <img src="../../public/images/logo.png">
   <songs></songs>

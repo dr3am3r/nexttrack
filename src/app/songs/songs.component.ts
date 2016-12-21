@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+
 import { Song } from './song';
 import { SongService } from './song.service.ts';
 
@@ -9,11 +11,23 @@ import { SongService } from './song.service.ts';
     styleUrls: [ './songs.css' ],
 })
 export class SongsComponent implements OnInit {
+
+    items: FirebaseListObservable<any>;
+
     songs: Song[];
     selectedSong: Song;
 
-    constructor(
-        private songService: SongService) { }
+    constructor(af: AngularFire,
+        private songService: SongService) {
+
+        this.items = af.database.list('/tracks');
+
+    }
+
+    upvote(key: string) {
+        console.log(this.items);
+        this.items.update(key, { votes: 'foo' });
+    }
 
     getSongs(): void {
         this.songService.getSongs().then(songs => this.songs = songs);

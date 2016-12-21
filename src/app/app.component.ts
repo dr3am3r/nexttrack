@@ -12,8 +12,11 @@ import '../../public/css/styles.css';
 })
 export class AppComponent {
 
-    constructor(af: AngularFire) {
-        console.log('@AppComponent')
+    constructor(public af: AngularFire) {
+
     }
 
+    anonLogin() {
+        this.af.auth.login()
+    }
 }
